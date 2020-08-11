@@ -3,7 +3,7 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        Space space = new Space(500,90);
+        Space space = new Space(50,20);
         //System.out.println(space.planesString());
         SpaceObject obj = new SpaceObject(space.space);
         System.out.println("X".repeat(40)+ "\n" + obj.count + "\n");

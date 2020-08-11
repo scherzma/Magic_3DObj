@@ -1,18 +1,34 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Stack;
 
 public class SpaceObject {
 
     private boolean[][][] space;
     public ArrayList<Body> objects;
+    public HashMap<Integer, Body> objectsBySize;
     int count;
 
     public SpaceObject(boolean[][][] space){
-        this.space = space.clone();
+        this.space = copyOf3Dim(space);
         objects = new ArrayList<>();
         getObjects();
+    }
+
+    public boolean[][][] copyOf3Dim(boolean[][][] array) {
+        boolean[][][] copy;
+        copy = new boolean[array.length][][];
+        for (int i = 0; i < array.length; i++) {
+            copy[i] = new boolean[array[i].length][];
+            for (int j = 0; j < array[i].length; j++) {
+                copy[i][j] = new boolean[array[i][j].length];
+                System.arraycopy(array[i][j], 0, copy[i][j], 0,
+                        array[i][j].length);
+            }
+        }
+        return copy;
     }
 
     private void getObjects(){
@@ -67,8 +83,8 @@ public class SpaceObject {
             }
         }
 
-
-
+        //System.out.println(body.size);
+        //objectsBySize.put(body.size, body);
         objects.add(body);
         if(count < body.size){
             count = body.size;
