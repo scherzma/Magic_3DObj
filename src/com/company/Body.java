@@ -8,7 +8,6 @@ public class Body {
 
     public Body(boolean[][][] space, int i, int j, int k){
         this.space = space;
-        this.size = size;
         koord[0] = i;
         koord[1] = j;
         koord[2] = k;
