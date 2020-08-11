@@ -70,42 +70,9 @@ public class SpaceObject {
 
 
         objects.add(body);
-
-        //objects.add(new Body(new boolean[space.length][space.length][space.length],i,j,k));
-        //getObjectRec(i,j,k,objects.get(objects.size()-1));
         if(count < body.size){
             count = body.size;
         }
+
     }
-
-    private void getObjectRec(int i, int j, int k, Body body){
-
-        int[] dirs = new int[]{-1,0,1};
-
-        if(space[i][j][k]) {
-            body.space[i][j][k] = true;
-            body.size++;
-            space[i][j][k] = false;
-
-
-            for (int a : dirs) {
-                for (int b : dirs) {
-                    for (int c : dirs) {
-                        if (a == 0 && b == 0 && c == 0) {
-                            continue;
-                        } else if (i + a < 0 || i + a > space.length - 1) {
-                            continue;
-                        } else if (j + b < 0 || j + b > space[i + a].length - 1) {
-                            continue;
-                        } else if (k + c < 0 || k + c > space[i + a][j + b].length - 1) {
-                            continue;
-                        }
-                        getObjectRec(i + a, j + b, k + c, body);
-                    }
-                }
-            }
-        }
-    }
-
-
 }
